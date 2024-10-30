@@ -1,5 +1,5 @@
 //
-const services = [
+const serviceData = [
     {
         id: 1,
         title: 'Plumbing Services',
@@ -59,58 +59,62 @@ const services = [
   ];
   
   
-  const serviceContainer = document.querySelector('.swiper-wrapper');
+  const swiperWrapper = document.getElementById('service-swiper-wrapper');
   
-  services.forEach(service => {
-    const card = document.createElement('div');
-    card.className = 'swiper-slide service-card bg-white text-center shadow-lg rounded-lg';
+  if (swiperWrapper) {
+    serviceData.forEach((service) => {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide';
+      slide.innerHTML = `
+        <a href="${service.link}" target="_blank" class="relative service-card p-6 bg-white rounded-lg shadow-lg text-center">
+          <div class="icon-container">
+            <img src="${service.image}" alt="${service.title}" class="h-16 w-16">
+          </div>
+          <h2 class="mt-16 text-lg font-semibold">${service.title}</h2>
+          <p class="text-gray-700 text-sm mb-4">${service.description}</p>
+          <span class="explore-link font-semibold hover:text-purple-900 text-sm">EXPLORE THIS SERVICE &rarr;</span>
+        </a>
+      `;
+      swiperWrapper.appendChild(slide);
+    });
   
-    card.innerHTML = `
-        <div class="icon-wrapper relative -mt-14 mb-6 flex justify-center">
-            <div class="icon bg-white border-4" style="border-color: #2A1768 !important; padding: 1rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <img src="${service.image}" alt="Icon representing ${service.title}" class="w-16 h-16">
-            </div>
-        </div>
-        <h3 class="text-xl font-bold mb-2" style="font-family: 'PT Serif', serif;">${service.title}</h3>
-        <p class="text-gray-600 mb-4">${service.description}</p>
-        <a href="${service.link}" class="text-purple-600 font-bold uppercase text-xs">Explore This Service ></a>
-    `;
-  
-    serviceContainer.appendChild(card);
-  });
-  
-  const swiper = new Swiper('.swiper-container', {
-    slidesPerView: 'auto',
-    spaceBetween: 20,
-    loop: true,
-    speed: 1500,
-    navigation: {
+    const swiper = new Swiper('.service-swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 5,
+      navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-    },
-    mousewheel: {
-        invert: false,
-        forceToAxis: true,
-        releaseOnEdges: true,
-    },
-    grabCursor: true,
-    breakpoints: {
+      },
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
         640: {
-            slidesPerView: 'auto',
-            spaceBetween: 10,
+          slidesPerView: 1,
+          spaceBetween: 5,
         },
         768: {
-            slidesPerView: 'auto',
-            spaceBetween: 20,
+          slidesPerView: 2,
+          spaceBetween: 5,
         },
         1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
+          slidesPerView: 3,
+          spaceBetween: 5,
         },
         1280: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-            autoplay: false,
+          slidesPerView: 4,
+          spaceBetween: 5,
         },
-    },
-  });
+      },
+    });
+  
+    if (serviceData.length <= 1) {
+      const nextButton = document.querySelector('.swiper-button-next');
+      const prevButton = document.querySelector('.swiper-button-prev');
+      if (nextButton) nextButton.style.display = 'none';
+      if (prevButton) prevButton.style.display = 'none';
+    }
+  }
+  

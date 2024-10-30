@@ -328,43 +328,123 @@ html {
   }
 }
 
-#assignment .service-card {
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  height: 300px;
-  padding: 1.5rem;
-  max-width: 300px;
-  display: flex;
+/* Service Section Container */
+#services-section {
+  margin: 0; 
+  padding: 0; 
+  display: flex; 
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center; 
 }
 
-#assignment .service-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+#services-section .service-swiper-container {
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2A1768 50%, #ccd1da 50%);
+  position: relative;
 }
 
-#assignment .swiper-button-next,
-#assignment .swiper-button-prev {
-  top: 40%;
-  color: #2A1768;
+/* Swiper Slide */
+#services-section .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#assignment .swiper-button-next::after,
-#assignment .swiper-button-prev::after {
-  font-size: 24px;
-  color: #2A1768;
+/* Service Card */
+#services-section .service-card {
+  width: 18rem;
+  height: 18rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: visible;
 }
 
-@media (max-width: 640px) {
-  #assignment .swiper-slide {
-      width: 100%;
-      flex: 0 0 30%;
+#services-section .service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Container */
+#services-section .icon-container {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e2e8f0;
+  padding: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 4px solid #2A1768;
+  z-index: 10;
+}
+
+/* Navigation Buttons */
+#services-section .swiper-button-next,
+#services-section .swiper-button-prev {
+  color: #4A5568;
+  top: 50%;
+  transform: translateY(-50%) scale(0.7);
+  width: 20px;
+  height: 20px;
+}
+
+#services-section .swiper-button-next {
+  right: 10px;
+}
+
+#services-section .swiper-button-prev {
+  left: 10px;
+}
+
+/* Service Heading */
+#services-section .service-heading {
+  position: absolute;
+  top: 10px; /* Adjusted from 0 to create a small gap */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color: white;
+}
+
+/* Responsive Font Size for Service Heading */
+@media (min-width: 640px) {
+  #services-section .service-heading {
+      font-size: 1.5rem; 
   }
-  #assignment .swiper-button-next,
-  #assignment .swiper-button-prev {
+}
+
+@media (min-width: 768px) {
+  #services-section .service-heading {
+      font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #services-section .service-heading {
+      font-size: 2.5rem;
+  }
+}
+
+/* Service Card Heading */
+#services-section .service-card h2 {
+  color: #2A1768;
+}
+
+/* Explore Link */
+#services-section .explore-link {
+  color: #2A1768;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  #services-section .swiper-button-next,
+  #services-section .swiper-button-prev {
       display: none;
   }
 }
+
 
 
 
